@@ -1,1 +1,3 @@
-# rockpaperscissorsgame
+# CODE CREATED BY PELLE VAN
+
+# FREE USE FOR ANYONE
