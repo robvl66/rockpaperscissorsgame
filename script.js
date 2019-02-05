@@ -8,19 +8,34 @@ const rock_div = document.getElementById("Rock");
 const paper_div = document.getElementById("Paper");
 const scissors_div = document.getElementById("Scissors");
 
+const smallUserword = "U".fontsize(3).sup();
+const smallCompword = "C".fontsize(3).sup();
+
+
 function getComputerChoice(){
     const choices = ['Rock', 'Paper', 'Scissors'];
     const randomNumber = (Math.floor(Math.random() * 3));
     return choices[randomNumber];
 }
 
+function getImg(C) {
+    switch (C) {
+        case "Rock":
+           return '<img src="https://www.rpsgame.org/assets/img/rock.svg" alt="" height="80" width="80" >'
+        case "Paper":
+           return '<img src="https://www.rpsgame.org/assets/img/paper.svg" alt="" height="80" width="80" >'
+        case "Scissors":
+           return '<img src="https://www.rpsgame.org/assets/img/scissors.svg" alt="" height="80" width="80" >'
+    }
+}
+
 function win(userChoice, computerChoice) {
     userScore++;
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
-    const smallUserword = "U".fontsize(3).sup();
-    const smallCompword = "C".fontsize(3).sup();
-    result_div.innerHTML = `${userChoice}${smallUserword} beats ${computerChoice}${smallCompword}. You win! ➕`;
+    uimg = getImg(userChoice);
+    cimg = getImg(computerChoice);
+    result_div.innerHTML = `${uimg} - ${cimg} <br> WIN ➕`;
     document.getElementById(userChoice).classList.add('green-glow');
     setTimeout(() =>  document.getElementById(userChoice).classList.remove('green-glow'), 300);
 }
@@ -29,9 +44,9 @@ function lose(userChoice, computerChoice) {
     computerScore++;
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
-    const smallUserword = "U".fontsize(3).sup();
-    const smallCompword = "C".fontsize(3).sup();
-    result_div.innerHTML = `${computerChoice}${smallCompword} beats ${userChoice}${smallUserword}. You lose! ➖`;
+    uimg = getImg(userChoice);
+    cimg = getImg(computerChoice);
+    result_div.innerHTML = `${cimg} - ${uimg} <br> LOSE ➖`;
     document.getElementById(userChoice).classList.add('red-glow');
     setTimeout(() =>  document.getElementById(userChoice).classList.remove('red-glow'), 300);
 }
@@ -39,9 +54,9 @@ function lose(userChoice, computerChoice) {
 function draw(userChoice, computerChoice) {
     userScore_span.innerHTML = userScore;
     computerScore_span.innerHTML = computerScore;
-    const smallUserword = "U".fontsize(3).sup();
-    const smallCompword = "C".fontsize(3).sup();
-    result_div.innerHTML = `${userChoice}${smallUserword} equals  ${computerChoice}${smallCompword}. It's a draw! 🚫`;
+    uimg = getImg(userChoice);
+    cimg = getImg(computerChoice);
+    result_div.innerHTML = `${cimg} -  ${cimg} <br> DRAW 🚫`;
     document.getElementById(userChoice).classList.add('blue-glow');
     setTimeout(() =>  document.getElementById(userChoice).classList.remove('blue-glow'), 300);
 }
