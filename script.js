@@ -31,38 +31,22 @@ function getImg(C) {
 
 function win(userChoice, computerChoice) {
     userScore++;
-    userScore_span.innerHTML = userScore;
-    computerScore_span.innerHTML = computerScore;
-    uimg = getImg(userChoice);
-    cimg = getImg(computerChoice);
-    result_div.innerHTML = `${uimg} - ${cimg} <br> WIN ➕`;
-    document.getElementById(userChoice).classList.add('green-glow');
-    setTimeout(() =>  document.getElementById(userChoice).classList.remove('green-glow'), 300);
+    result_div.innerHTML = getImg(userChoice) + ` - ${cimg} <br> WIN ➕`;
 }
 
 function lose(userChoice, computerChoice) {
     computerScore++;
-    userScore_span.innerHTML = userScore;
-    computerScore_span.innerHTML = computerScore;
-    uimg = getImg(userChoice);
-    cimg = getImg(computerChoice);
-    result_div.innerHTML = `${cimg} - ${uimg} <br> LOSE ➖`;
-    document.getElementById(userChoice).classList.add('red-glow');
-    setTimeout(() =>  document.getElementById(userChoice).classList.remove('red-glow'), 300);
+    result_div.innerHTML = getImg(userChoice) + ` - ${cimg} <br> LOSE ➖`;
 }
 
 function draw(userChoice, computerChoice) {
-    userScore_span.innerHTML = userScore;
-    computerScore_span.innerHTML = computerScore;
-    uimg = getImg(userChoice);
-    cimg = getImg(computerChoice);
-    result_div.innerHTML = `${cimg} -  ${cimg} <br> DRAW 🚫`;
-    document.getElementById(userChoice).classList.add('blue-glow');
-    setTimeout(() =>  document.getElementById(userChoice).classList.remove('blue-glow'), 300);
+    result_div.innerHTML = getImg(userChoice) + ` -  ${cimg} <br> DRAW 🚫`;
 }
 
 function game(userChoice)        {
     const computerChoice = getComputerChoice();
+    uimg = getImg(userChoice);
+    cimg = getImg(computerChoice);
     switch (userChoice + computerChoice) {
         case "RockScissors":
         case "PaperRock":
@@ -78,6 +62,10 @@ function game(userChoice)        {
             draw(userChoice, computerChoice)
             break;
     }
+    userScore_span.innerHTML = userScore;
+    computerScore_span.innerHTML = computerScore;
+    document.getElementById(userChoice).classList.add('red-glow');
+    setTimeout(() =>  document.getElementById(userChoice).classList.remove('red-glow'), 300);
 
 }
 
